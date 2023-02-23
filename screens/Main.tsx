@@ -1,31 +1,22 @@
-import { BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { FunctionComponent } from 'react';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { RootStackProps } from '../App';
-import { CompositeNavigationProp } from '@react-navigation/native';
+import { BottomTabParamList, RootStackProps } from '../models/types';
+import { Color } from '../components/shared';
 
-export type BottomTabParamList = {
-   Home: undefined;
-   Search: undefined;
- }
-
-export type TabProps = BottomTabNavigationProp<BottomTabParamList>
-
+ 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
-export type MainProps = {
-   navigation: CompositeNavigationProp<TabProps, RootStackProps>
-}
- 
-const Main: FunctionComponent<MainProps> = ({ navigation }) => {
+const Main:FunctionComponent<RootStackProps<'Main'>> = ({navigation}) => {
+
    return (
       <Tab.Navigator screenOptions={{
          tabBarShowLabel: false,
-         tabBarActiveTintColor: '#000',
-         tabBarInactiveTintColor: '#000'
+         tabBarActiveTintColor: Color.black,
+         tabBarInactiveTintColor: Color.black
       }}>
          <Tab.Screen
             name="Home"
@@ -42,12 +33,12 @@ const Main: FunctionComponent<MainProps> = ({ navigation }) => {
                         onPress={() => navigation.navigate('Notifications')}
                         style={{ marginRight: 30 }}
                      >
-                        <Icon name="heart-outline" color="#000" size={25} />
+                        <Icon name="heart-outline" color={Color.black} size={25} />
                      </TouchableOpacity>
                      <TouchableOpacity
                         onPress={() => navigation.navigate('Messages')}
                      >
-                        <Icon name="chatbubble-ellipses-outline" color="#000" size={22} />
+                        <Icon name="chatbubble-ellipses-outline" color={Color.black} size={22} />
                      </TouchableOpacity>
                   </View>
                )
@@ -57,7 +48,7 @@ const Main: FunctionComponent<MainProps> = ({ navigation }) => {
             name="Search"
             component={SearchScreen}
             options={{
-               tabBarIcon: ({ color, size, focused }) => (
+               tabBarIcon: ({ color, focused }) => (
                   <Icon name={focused ? "search" : "search-outline"} size={30} color={color} />
                )
             }}

@@ -18,8 +18,7 @@ export default Container
 
 const styles = StyleSheet.create({
     container: {
-        width: screenWidth,
-        height: screenHeight,
-        backgroundColor: 'pink'
+        flex: 1,
+        backgroundColor: '#fff'
     }
 })

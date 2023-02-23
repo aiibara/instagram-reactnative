@@ -19,5 +19,14 @@ export interface IUser {
   userName: string,
   profilePic: string,
   id: string,
-  fullName: string
+  fullName: string,
+  hasStory: boolean
+}
+
+
+export interface IComment {
+  user: IUser,
+  text: string,
+  likeCount?: number,
+  userHasLiked?: boolean
 }
