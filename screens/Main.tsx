@@ -6,12 +6,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { BottomTabParamList, RootStackProps } from '../models/types';
 import { Color } from '../components/shared';
+import { useReduxDispatch, useReduxSelector } from '../redux/store';
+import CProfilePic from '../components/CProfilePic';
+import ProfileScreen from './ProfileScreen';
 
  
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const Main:FunctionComponent<RootStackProps<'Main'>> = ({navigation}) => {
-
+   const user = useReduxSelector(state => state.user)
    return (
       <Tab.Navigator screenOptions={{
          tabBarShowLabel: false,
@@ -50,6 +53,17 @@ const Main:FunctionComponent<RootStackProps<'Main'>> = ({navigation}) => {
             options={{
                tabBarIcon: ({ color, focused }) => (
                   <Icon name={focused ? "search" : "search-outline"} size={30} color={color} />
+               )
+            }}
+         />
+
+         <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            initialParams={{user: user}}
+            options={{
+               tabBarIcon: ({ color, focused }) => (
+                  <CProfilePic uri={user.profilePic} diameter={40} hasStory={false} />
                )
             }}
          />

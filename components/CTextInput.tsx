@@ -23,7 +23,6 @@ const CTextInput = React.forwardRef(
             return commentText
          },
          appendText(emo: string) {
-            console.log("commenttext", commentText)
             inputRef.current?.focus()
             inputRef.current?.setNativeProps({ text: commentText.slice(0, selectionPosition.start) + emo + commentText.slice(selectionPosition.end) })
          },

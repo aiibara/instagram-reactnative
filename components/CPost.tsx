@@ -20,7 +20,6 @@ const CPost: FunctionComponent<PostProps> = ({ post: _post, navigation }) => {
       setPost(prevState => ({ ...prevState, userHasLiked: !prevState.userHasLiked }))
    }
 
-   console.log(navigation)
 
    if (post) {
       return (

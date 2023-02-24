@@ -1,6 +1,6 @@
 export interface IStory { 
     image: string, 
-    name: string, 
+    user: IUser, 
     id: string 
 };
 

@@ -79,8 +79,8 @@ const CommentScreen = () => {
                      }
                      
                      {
-                        comments.map(comment => (
-                           <CComment comment={comment} />
+                        comments.map((comment, idx) => (
+                           <CComment key={idx} comment={comment} />
                         ))
                      }
                   </ScrollView>

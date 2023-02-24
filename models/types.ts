@@ -1,7 +1,7 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { IPost } from "./interface";
+import { IPost, IUser } from "./interface";
 
 
 export type RootStackParamList = {
@@ -14,6 +14,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
     Home: undefined;
     Search: undefined;
+    Profile: {user: IUser};
 }
 
 export type RootStackProps<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>
